@@ -83,7 +83,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
                             <h2 class="text-center">Форма обратной связи</h2>
-                            <form>
+                            <form method="post">
+                                {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Имя</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder="Введите имя">
