@@ -5,11 +5,12 @@ from catalog.models import Category, Product
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+
         categories_list = [
-            {'name': 'lapty', 'description': 'Good'},
-            {'name': 'lapty1', 'description': 'Good1'},
-            {'name': 'lapty2', 'description': 'Good2'},
-            {'name': 'lapty3', 'description': 'Good3'},
+            {'name': 'footwear', 'description': 'Good'},
+            {'name': 'clothes', 'description': 'Good1'},
+            {'name': 'accessories', 'description': 'Good2'},
+            {'name': 'pants', 'description': 'Good3'},
         ]
         categories_for_create = []
 
@@ -20,12 +21,10 @@ class Command(BaseCommand):
 
         Category.objects.bulk_create(categories_for_create)
 
-        product_list = [
-            {'name': 'lapty', 'description': 'Good', 'category': 'footwear',
-             'price_for_purchase': '1', 'creation_date': '23.01.2000' },
-            {'name': 'lapty1', 'description': 'Good1', 'category': 'footwear1', 'price_for_purchase': '11',
-             'creation_date': '23.01.2001'}
-        ]
+        product_list = [{ "name": "Sneakers", "description": "good for walking", "category": Category.objects.get(pk=1),
+                         "price_for_purchase": 1000, "creation_date": "2023-07-04",
+                          "last_change_date": "2023-07-17"}]
+
 
         products_to_create = []
 
