@@ -21,9 +21,17 @@ class Command(BaseCommand):
 
         Category.objects.bulk_create(categories_for_create)
 
-        product_list = [{ "name": "Sneakers", "description": "good for walking", "category": Category.objects.get(pk=1),
+        product_list = [{ "name": "Sneakers abibas", "description": "good for walking", "category": Category.objects.get(pk=1),
                          "price_for_purchase": 1000, "creation_date": "2023-07-04",
-                          "last_change_date": "2023-07-17"}]
+                          "last_change_date": "2023-07-17"},
+                        {"name": "Sneakers nuke", "description": "good for running", "category": Category.objects.get(pk=2),
+                         "price_for_purchase": 1001, "creation_date": "2023-07-04",
+                         "last_change_date": "2023-07-17"},
+                        {"name": "Sneakers rumble", "description": "good for crawling", "category": Category.objects.get(pk=3),
+                         "price_for_purchase": 1010, "creation_date": "2023-07-04",
+                         "last_change_date": "2023-07-17"}
+
+                        ]
 
 
         products_to_create = []

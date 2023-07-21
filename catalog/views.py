@@ -1,8 +1,15 @@
 from django.shortcuts import render
 
+from catalog.models import Product
+
+
 # Create your views here.
 def index_homepage(request):
-    return render(request, 'main/index.html')
+    product_list = Product.objects.all()
+    context = {
+        'object_list': product_list
+    }
+    return render(request, 'main/index.html', context)
 
 
 def contacts(request):
@@ -12,3 +19,7 @@ def contacts(request):
         message = request.POST.get('message')
         print(f'{name} {email} {message}')
     return render(request, 'main/contacts.html')
+
+
+def card(request):
+    return render(request, 'main/card.html')
