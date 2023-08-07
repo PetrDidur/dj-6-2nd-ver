@@ -18,7 +18,10 @@
                 </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">${{ object.price_for_purchase }}</h1>
-                    <img class="card-img-top" src="{{ object.image | mediapath }}">
+                    <a href="{% url 'view' object.pk %}" type="button"
+                       class="btn btn-lg btn-block btn-outline-primary"><img class="card-img-top"
+                                                                             src="{{ object.image | mediapath }}">
+                    </a>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>{{ object.description }}</li>
                     </ul>

@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from catalog.models import Product
 
 
 class ProductListView(ListView):
     model = Product
-    
+
 
 class ContactsView(View):
     template_name = 'catalog/contacts.html'
@@ -23,5 +23,6 @@ class ContactsView(View):
         return render(request, self.template_name)
 
 
-def card(request):
-    return render(request, 'catalog/card.html')
+class CardDetailView(DetailView):
+    model = Product
+
