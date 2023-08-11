@@ -18,7 +18,16 @@
             <h5 class="card-title">{{object.name}}</h5>
             <p class="card-text">{{object.description}}</p>
             <p class="card-price">{{object.price_for_purchase}}$</p>
-            <a href="#" class="btn btn-primary">Купить</a>
+            <h5>Версии продукта:</h5>
+                <ul>
+                {% for version in versions %}
+                    <li>Номер версии -{{ version.version_number }}</li>
+                    <li>Название - {{ version.version_name }}</li>
+
+                {% endfor %}
+                </ul>
+
+            <a href="{% url 'homepage' %}" class="btn btn-primary">На главную</a>
         </div>
     </div>
 </div>

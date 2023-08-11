@@ -21,11 +21,11 @@
                         <li>{{ object.content }}</li>
                     </ul>
                     <div class="btn-group">
-                        <a href="{% url 'blog:view' object.pk object.slug %}" type="button"
+                        <a href="{% url 'blog:view' object.pk %}" type="button"
                            class="btn btn-lg btn-block btn-outline-primary">view</a>
-                        <a href="{% url 'blog:edit' object.pk object.slug %}" type="button"
+                        <a href="{% url 'blog:edit' object.pk %}" type="button"
                            class="btn btn-lg btn-block btn-outline-primary">edit</a>
-                        <a href="{% url 'blog:delete' object.pk object.slug  %}" type="button"
+                        <a href="{% url 'blog:delete' object.pk %}" type="button"
                            class="btn btn-lg btn-block btn-outline-primary">delete</a>
                     </div>
                 </div>
