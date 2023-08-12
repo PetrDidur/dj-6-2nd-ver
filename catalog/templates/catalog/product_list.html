@@ -15,8 +15,7 @@
 <div class="container">
     <div class="row text-center">
         {% for object in object_list %}
-        {% for version in object.version_set.all %}
-        {% if version.is_active == True %}
+
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -28,12 +27,19 @@
                        class="btn btn-lg btn-block btn-outline-primary"><img class="card-img-top"
                                                                              src="{{ object.image | mediapath }}">
                     </a>
+                    {% for version in object.version_set.all %}
+                    {% if version.is_active == True %}
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>{{ object.description }}</li>
                         <li>версия продукта: {{ version.version_name }}</li>
                         <li>номер версии: {{ version.version_number }}</li>
                     </ul>
-
+                    {% else %}
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>{{ object.description }}</li>
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
                     <div class="btn-group">
                         <a href="{% url 'view_product' object.pk %}" type="button"
                            class="btn btn-lg btn-block btn-outline-primary">view</a>
@@ -47,8 +53,6 @@
 
         </div>
 
-        {% endif %}
-        {% endfor %}
         {% endfor %}
     </div>
 </div>

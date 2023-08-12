@@ -1,7 +1,7 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
 <form method="post" enctype="multipart/form-data" class="row">
-    <div class="card">
+    <div class="col - 3">
         <div class="card-header">
             <div class="card-title">
                 <h2>Добавление продукта</h2>
@@ -25,12 +25,17 @@
             <div class="card-header">
                 Версия
             </div>
-            <div class="card-body">
+            <div class="col-6">
+            <div class="col" >
                 {{ formset.management_form}}
                 {% for form in formset.forms %}
                 {{ form.as_p }}
+                {% if not forloop.last %}
+                <hr>
+                {% endif %}
                 {% endfor %}
             </div>
+                </div>
         </div>
     </div>
 </form>
