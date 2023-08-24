@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -26,6 +28,7 @@ class ContactsView(View):
         return render(request, self.template_name)
 
 
+@method_decorator(login_required(login_url='users:register'), name='dispatch')
 class CardDetailView(DetailView):
     model = Product
 
@@ -38,12 +41,21 @@ class CardDetailView(DetailView):
         return context
 
 
+@method_decorator(login_required(login_url='users:register'), name='dispatch')
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('homepage')
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
 
+        return super().form_valid(form)
+
+
+@method_decorator(login_required(login_url='users:register'), name='dispatch')
 class ProductUpdateView(UpdateView):
     model = Product
     fields = ('name', 'description','category', 'price_for_purchase')
@@ -74,8 +86,7 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-
-
+@method_decorator(login_required(login_url='users:register'), name='dispatch')
 class ProductDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy('homepage')

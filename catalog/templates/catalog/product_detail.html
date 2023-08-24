@@ -17,7 +17,8 @@
         <div class="card-body">
             <h5 class="card-title">{{object.name}}</h5>
             <p class="card-text">{{object.description}}</p>
-            <p class="card-price">{{object.price_for_purchase}}$</p>
+            <p class="card-price">{{object.price_for_purchase}}$</p><br>
+            <p class="card-price">{{object.owner|default:"Свободное ПО"}}</p>
             <h5>Версии продукта:</h5>
                 <ul>
                 {% for version in versions %}
